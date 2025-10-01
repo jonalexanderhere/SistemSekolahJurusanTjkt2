@@ -20,7 +20,8 @@
     "postinstall": "node scripts/fetch-models.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fetch-models": "node scripts/fetch-models.js"
+    "fetch-models": "node scripts/fetch-models.js",
+    "preinstall": "npm install --legacy-peer-deps"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +44,11 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.1"
+  },
+  "overrides": {
+    "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "typescript": "^4.9.5"
   }
 }
