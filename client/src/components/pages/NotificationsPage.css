@@ -1,0 +1,31 @@
+.notifications-page {
+  max-width: 1000px;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.restricted {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #92400e;
+}
+
+.notif-status {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.notif-status.success {
+  color: #065f46;
+}
+
+.notif-status.error {
+  color: #991b1b;
+}
+
+

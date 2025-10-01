@@ -1,0 +1,34 @@
+.profile-page {
+  max-width: 1000px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.status.success {
+  color: #065f46;
+  font-weight: 600;
+}
+
+.status.error {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

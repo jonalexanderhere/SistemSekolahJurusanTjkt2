@@ -1,0 +1,125 @@
+.face-registration-page {
+  max-width: 1400px;
+}
+
+.face-registration-page h1 {
+  font-size: 32px;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.message-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.message-success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.message-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.message-info {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.registration-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.camera-section {
+  padding: 24px;
+}
+
+.video-container {
+  position: relative;
+  background: #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container video,
+.video-container canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.camera-placeholder {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.camera-placeholder p {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.camera-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.status-info {
+  text-align: center;
+  padding: 32px 0;
+}
+
+.status-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 16px 0 24px;
+}
+
+.status-text.success {
+  color: #10b981;
+}
+
+.status-text.error {
+  color: #ef4444;
+}
+
+.guide-list {
+  padding-left: 20px;
+  line-height: 2;
+  color: #4b5563;
+}
+
+.guide-list li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1024px) {
+  .registration-container {
+    grid-template-columns: 1fr;
+  }
+
+  .video-container {
+    height: auto;
+  }
+}
+
