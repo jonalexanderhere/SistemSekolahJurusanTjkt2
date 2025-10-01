@@ -14,6 +14,7 @@ function StudentDashboard({ user }) {
 
   useEffect(() => {
     loadDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id]);
 
   const loadDashboardData = async () => {

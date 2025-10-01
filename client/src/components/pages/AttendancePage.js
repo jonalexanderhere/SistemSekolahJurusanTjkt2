@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import * as faceapi from 'face-api.js';
 import io from 'socket.io-client';
-import { supabase } from '../../lib/supabase';
+import { supabase, isSupabaseConfigured, localStorageDB } from '../../lib/supabase';
 import { Camera, ClipboardCheck, Users, Calendar } from 'lucide-react';
 import './AttendancePage.css';
 
@@ -33,33 +33,39 @@ function AttendancePage({ user }) {
       showToast('Absensi berhasil dicatat');
     });
 
-    // Supabase realtime as fallback on Vercel
-    const channel = supabase
-      .channel('attendance-changes')
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'attendance' }, (payload) => {
-        const r = payload.new;
-        setAttendanceRecords(prev => [{
-          id: `att_${r.id || Date.now()}`,
-          studentId: r.student_id,
-          nisn: r.nisn,
-          nama: r.nama,
-          kelas: r.kelas,
-          type: r.type,
-          method: r.method,
-          timestamp: r.timestamp_iso,
-          date: r.date_id,
-          time: r.time_id,
-          status: r.status
-        }, ...prev]);
-        showToast('Absensi berhasil dicatat');
-      })
-      .subscribe();
+    // Supabase realtime only if configured
+    let channel = null;
+    if (isSupabaseConfigured && supabase) {
+      channel = supabase
+        .channel('attendance-changes')
+        .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'attendance' }, (payload) => {
+          const r = payload.new;
+          setAttendanceRecords(prev => [{
+            id: `att_${r.id || Date.now()}`,
+            studentId: r.student_id,
+            nisn: r.nisn,
+            nama: r.nama,
+            kelas: r.kelas,
+            type: r.type,
+            method: r.method,
+            timestamp: r.timestamp_iso,
+            date: r.date_id,
+            time: r.time_id,
+            status: r.status
+          }, ...prev]);
+          showToast('Absensi berhasil dicatat');
+        })
+        .subscribe();
+    }
 
     return () => {
       stopCamera();
       socket.off('attendanceUpdate');
-      supabase.removeChannel(channel);
+      if (channel && supabase) {
+        supabase.removeChannel(channel);
+      }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadModels = async () => {
@@ -236,22 +242,6 @@ function AttendancePage({ user }) {
     }
   };
 
-  const handleManualAttendance = async (studentId) => {
-    try {
-      await axios.post('/api/attendance/record', {
-        studentId,
-        type: 'masuk',
-        method: 'manual'
-      });
-
-      setMessage('Absensi manual berhasil dicatat!');
-      showToast('Absensi manual berhasil ✅');
-      loadAttendanceData();
-    } catch (error) {
-      console.error('Error recording attendance:', error);
-      setMessage('Gagal mencatat absensi.');
-    }
-  };
 
   const showToast = (text) => {
     if (!('Notification' in window)) return;

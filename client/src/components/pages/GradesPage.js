@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Plus, Edit2, Trash2, X } from 'lucide-react';
+import { Plus, Trash2, X } from 'lucide-react';
 import './GradesPage.css';
 
 function GradesPage({ user }) {
@@ -20,7 +20,8 @@ function GradesPage({ user }) {
     if (user.role !== 'siswa') {
       loadStudents();
     }
-  }, [user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.id, user.role]);
 
   const loadGrades = async () => {
     try {

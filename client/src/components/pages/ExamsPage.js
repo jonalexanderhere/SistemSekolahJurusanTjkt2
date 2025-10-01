@@ -24,7 +24,8 @@ function ExamsPage({ user }) {
     if (user.role === 'siswa') {
       loadSubmissions();
     }
-  }, [user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.id, user.role]);
 
   const loadExams = async () => {
     try {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Users, ClipboardCheck, GraduationCap, TrendingUp } from 'lucide-react';
+import { Users, ClipboardCheck, TrendingUp } from 'lucide-react';
 import './AdminDashboard.css';
 
 function AdminDashboard() {
@@ -14,6 +14,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     loadDashboardData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadDashboardData = async () => {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { supabase } from '../../lib/supabase';
 import * as faceapi from 'face-api.js';
 import { Camera, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 import './FaceRegistration.css';
@@ -22,6 +21,7 @@ function FaceRegistration({ user }) {
     return () => {
       stopCamera();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadModels = async () => {
@@ -125,7 +125,7 @@ function FaceRegistration({ user }) {
       // Save face descriptor
       const descriptor = detections[0].descriptor;
       
-      const response = await axios.post('/api/face/register', {
+      await axios.post('/api/face/register', {
         studentId: user.id,
         nisn: user.nisn,
         nama: user.nama,
