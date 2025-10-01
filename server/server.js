@@ -46,10 +46,32 @@ app.use('/api/face', faceRoutes);
 // Static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    message: 'API Server Sistem Informasi TJKT MPKK',
+    status: 'running',
+    endpoints: {
+      auth: '/api/auth',
+      attendance: '/api/attendance',
+      grades: '/api/grades',
+      exams: '/api/exams',
+      face: '/api/face'
+    }
+  });
+});
+
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`API available at http://localhost:${PORT}`);
+  console.log(`Frontend should be at http://localhost:3000`);
 });
 
 module.exports = { io };
