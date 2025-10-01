@@ -9,6 +9,7 @@ const attendanceRoutes = require('./routes/attendance');
 const gradesRoutes = require('./routes/grades');
 const examsRoutes = require('./routes/exams');
 const faceRoutes = require('./routes/face');
+const settingsRoutes = require('./routes/settings');
 
 const app = express();
 const server = http.createServer(app);
@@ -42,6 +43,7 @@ app.use('/api/attendance', attendanceRoutes);
 app.use('/api/grades', gradesRoutes);
 app.use('/api/exams', examsRoutes);
 app.use('/api/face', faceRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // Static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

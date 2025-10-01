@@ -23,6 +23,7 @@ import NotificationsPage from './pages/NotificationsPage';
 import StudentsPage from './pages/StudentsPage';
 import ProfilePage from './pages/ProfilePage';
 import ChangePassword from './pages/ChangePassword';
+import SettingsPage from './pages/SettingsPage';
 import './Dashboard.css';
 
 function Dashboard({ user, onLogout }) {
@@ -41,6 +42,7 @@ function Dashboard({ user, onLogout }) {
         { path: '/dashboard/grades', icon: GraduationCap, label: 'Nilai' },
         { path: '/dashboard/exams', icon: FileText, label: 'Ujian' },
         { path: '/dashboard/notifications', icon: FileText, label: 'Notifikasi' },
+        { path: '/dashboard/settings', icon: Settings, label: 'Pengaturan' },
         { path: '/dashboard/change-password', icon: Lock, label: 'Ubah Password' }
       ];
     } else if (user.role === 'guru') {
@@ -135,6 +137,9 @@ function Dashboard({ user, onLogout }) {
           )}
           <Route path="/profile" element={<ProfilePage user={user} />} />
           <Route path="/change-password" element={<ChangePassword user={user} />} />
+          {user.role === 'admin' && (
+            <Route path="/settings" element={<SettingsPage user={user} />} />
+          )}
           {user.role === 'siswa' && (
             <Route path="/face-registration" element={<FaceRegistration user={user} />} />
           )}

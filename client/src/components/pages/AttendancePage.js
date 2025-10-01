@@ -212,27 +212,38 @@ function AttendancePage({ user }) {
     }
 
     try {
-      // try Vercel serverless first
+      // Check attendance time first
+      const timeCheck = await axios.get('/api/settings/check/attendance-time');
+      const { canCheckin, currentPeriod, message: timeMessage } = timeCheck.data;
+
+      if (!canCheckin) {
+        setMessage(`❌ ${timeMessage}`);
+        showToast(timeMessage);
+        stopCamera();
+        return;
+      }
+
+      // Record attendance with correct period type
       try {
         await axios.post('/api/attendance/record', {
           studentId: user.id,
           nisn: user.nisn,
           nama: user.nama,
           kelas: user.kelas,
-          type: 'masuk',
+          type: currentPeriod, // 'masuk' or 'pulang' based on current time
           method: 'face'
         });
       } catch (e) {
         // fallback to legacy backend
         await axios.post('/api/attendance/record', {
           studentId: user.id,
-          type: 'masuk',
+          type: currentPeriod,
           method: 'face'
         });
       }
 
-      setMessage('Absensi berhasil dicatat!');
-      showToast('Absensi berhasil ✅');
+      setMessage(`✅ Absensi ${currentPeriod} berhasil dicatat!`);
+      showToast(`Absensi ${currentPeriod} berhasil ✅`);
       stopCamera();
       loadAttendanceData();
     } catch (error) {
