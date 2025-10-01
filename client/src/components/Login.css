@@ -34,14 +34,23 @@
 }
 
 .login-header h1 {
-  font-size: 28px;
+  font-size: 26px;
   color: #1f2937;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  font-weight: 700;
 }
 
-.login-header p {
-  color: #6b7280;
-  font-size: 14px;
+.login-header .subtitle {
+  color: #4b5563;
+  font-size: 15px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.login-header .department {
+  color: #667eea;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .login-form {
@@ -64,42 +73,17 @@
   margin-top: 8px;
 }
 
-.login-info {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 24px;
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
 }
 
-.login-info h3 {
-  font-size: 14px;
-  color: #374151;
-  margin-bottom: 12px;
-}
-
-.info-grid {
-  display: grid;
-  gap: 12px;
-}
-
-.info-item {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  border-left: 4px solid #667eea;
-}
-
-.info-item strong {
-  display: block;
-  color: #667eea;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-
-.info-item p {
-  font-size: 12px;
+.login-footer .help-text {
+  font-size: 13px;
   color: #6b7280;
-  margin: 2px 0;
+  font-style: italic;
 }
 
 @media (max-width: 640px) {

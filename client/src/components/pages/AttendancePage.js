@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import * as faceapi from 'face-api.js';
 import io from 'socket.io-client';
-import { supabase, isSupabaseConfigured, localStorageDB } from '../../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../../lib/supabase';
 import { Camera, ClipboardCheck, Users, Calendar } from 'lucide-react';
 import './AttendancePage.css';
 

@@ -36,8 +36,9 @@ function Login({ onLogin }) {
           <div className="logo-container">
             <School size={48} />
           </div>
-          <h1>TJKT MPKK</h1>
-          <p>Sistem Informasi Sekolah</p>
+          <h1>SMK Negeri 1 Liwa</h1>
+          <p className="subtitle">Sistem Informasi Sekolah</p>
+          <p className="department">Jurusan TJKT - Kelas XII TJKT 2</p>
         </div>
 
         <form onSubmit={handleSubmit} className="login-form">
@@ -74,25 +75,8 @@ function Login({ onLogin }) {
           </button>
         </form>
 
-        <div className="login-info">
-          <h3>Informasi Login:</h3>
-          <div className="info-grid">
-            <div className="info-item">
-              <strong>Admin:</strong>
-              <p>Username: admin1 / admin2</p>
-              <p>Password: admin123</p>
-            </div>
-            <div className="info-item">
-              <strong>Guru:</strong>
-              <p>Username: guru1 / guru2</p>
-              <p>Password: guru123</p>
-            </div>
-            <div className="info-item">
-              <strong>Siswa:</strong>
-              <p>Username: NISN</p>
-              <p>Password: ID Siswa</p>
-            </div>
-          </div>
+        <div className="login-footer">
+          <p className="help-text">Hubungi administrator jika mengalami kesulitan login</p>
         </div>
       </div>
     </div>

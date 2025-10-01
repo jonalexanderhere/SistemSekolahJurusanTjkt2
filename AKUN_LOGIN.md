@@ -4,13 +4,17 @@
 
 ### Admin 1
 - **Username:** `admin1`
-- **Password:** `admin123`
-- **Email:** admin1@smktjkt.sch.id
+- **Password:** `Admin#SMKN1Liwa2024!`
+- **Nama:** Administrator 1 - SMK Negeri 1 Liwa
+- **Email:** admin1@smkn1liwa.sch.id
 
 ### Admin 2
 - **Username:** `admin2`
-- **Password:** `admin123`
-- **Email:** admin2@smktjkt.sch.id
+- **Password:** `Liwa@TJKT#2024Secure!`
+- **Nama:** Administrator 2 - SMK Negeri 1 Liwa
+- **Email:** admin2@smkn1liwa.sch.id
+
+> ⚠️ **PENTING:** Password admin sangat kuat untuk keamanan sistem. Simpan dengan aman!
 
 ---
 

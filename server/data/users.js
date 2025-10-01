@@ -8,18 +8,18 @@ const users = {
     {
       id: 'admin001',
       username: 'admin1',
-      password: hashPassword('admin123'),
-      nama: 'Administrator 1',
+      password: hashPassword('Admin#SMKN1Liwa2024!'),
+      nama: 'Administrator 1 - SMK Negeri 1 Liwa',
       role: 'admin',
-      email: 'admin1@smktjkt.sch.id'
+      email: 'admin1@smkn1liwa.sch.id'
     },
     {
       id: 'admin002',
       username: 'admin2',
-      password: hashPassword('admin123'),
-      nama: 'Administrator 2',
+      password: hashPassword('Liwa@TJKT#2024Secure!'),
+      nama: 'Administrator 2 - SMK Negeri 1 Liwa',
       role: 'admin',
-      email: 'admin2@smktjkt.sch.id'
+      email: 'admin2@smkn1liwa.sch.id'
     }
   ],
   

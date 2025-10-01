@@ -9,7 +9,8 @@ import {
   Settings, 
   LogOut,
   Menu,
-  X
+  X,
+  Lock
 } from 'lucide-react';
 import AdminDashboard from './dashboards/AdminDashboard';
 import TeacherDashboard from './dashboards/TeacherDashboard';
@@ -20,8 +21,9 @@ import ExamsPage from './pages/ExamsPage';
 import FaceRegistration from './pages/FaceRegistration';
 import NotificationsPage from './pages/NotificationsPage';
 import StudentsPage from './pages/StudentsPage';
-import './Dashboard.css';
 import ProfilePage from './pages/ProfilePage';
+import ChangePassword from './pages/ChangePassword';
+import './Dashboard.css';
 
 function Dashboard({ user, onLogout }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -38,7 +40,8 @@ function Dashboard({ user, onLogout }) {
         { path: '/dashboard/students', icon: Users, label: 'Data Siswa' },
         { path: '/dashboard/grades', icon: GraduationCap, label: 'Nilai' },
         { path: '/dashboard/exams', icon: FileText, label: 'Ujian' },
-        { path: '/dashboard/notifications', icon: FileText, label: 'Notifikasi' }
+        { path: '/dashboard/notifications', icon: FileText, label: 'Notifikasi' },
+        { path: '/dashboard/change-password', icon: Lock, label: 'Ubah Password' }
       ];
     } else if (user.role === 'guru') {
       return [
@@ -46,7 +49,8 @@ function Dashboard({ user, onLogout }) {
         { path: '/dashboard/attendance', icon: ClipboardCheck, label: 'Absensi' },
         { path: '/dashboard/grades', icon: GraduationCap, label: 'Nilai' },
         { path: '/dashboard/exams', icon: FileText, label: 'Ujian' },
-        { path: '/dashboard/notifications', icon: FileText, label: 'Notifikasi' }
+        { path: '/dashboard/notifications', icon: FileText, label: 'Notifikasi' },
+        { path: '/dashboard/change-password', icon: Lock, label: 'Ubah Password' }
       ];
     } else {
       return [
@@ -55,7 +59,8 @@ function Dashboard({ user, onLogout }) {
         { path: '/dashboard/attendance', icon: ClipboardCheck, label: 'Absensi Saya' },
         { path: '/dashboard/grades', icon: GraduationCap, label: 'Nilai Saya' },
         { path: '/dashboard/exams', icon: FileText, label: 'Ujian' },
-        { path: '/dashboard/profile', icon: Settings, label: 'Profil' }
+        { path: '/dashboard/profile', icon: Settings, label: 'Profil' },
+        { path: '/dashboard/change-password', icon: Lock, label: 'Ubah Password' }
       ];
     }
   };
@@ -65,11 +70,16 @@ function Dashboard({ user, onLogout }) {
       {/* Sidebar */}
       <aside className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
-          <h2>TJKT MPKK</h2>
+          <h2>{sidebarOpen ? 'SMK Negeri 1 Liwa' : 'SMKN1'}</h2>
           <button className="toggle-btn" onClick={() => setSidebarOpen(!sidebarOpen)}>
             {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+        {sidebarOpen && (
+          <div className="sidebar-subtitle">
+            <p>TJKT XII-2</p>
+          </div>
+        )}
 
         <div className="user-info">
           <div className="user-avatar">
@@ -124,6 +134,7 @@ function Dashboard({ user, onLogout }) {
             <Route path="/students" element={<StudentsPage />} />
           )}
           <Route path="/profile" element={<ProfilePage user={user} />} />
+          <Route path="/change-password" element={<ChangePassword user={user} />} />
           {user.role === 'siswa' && (
             <Route path="/face-registration" element={<FaceRegistration user={user} />} />
           )}

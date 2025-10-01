@@ -91,5 +91,58 @@ router.get('/students', (req, res) => {
   res.json(studentsWithoutPasswords);
 });
 
+// Change password
+router.post('/change-password', (req, res) => {
+  const { userId, currentPassword, newPassword } = req.body;
+
+  if (!userId || !currentPassword || !newPassword) {
+    return res.status(400).json({ message: 'Data tidak lengkap' });
+  }
+
+  // Find user
+  let user = null;
+  let userArray = null;
+
+  user = users.admins.find(u => u.id === userId);
+  if (user) userArray = users.admins;
+
+  if (!user) {
+    user = users.teachers.find(u => u.id === userId);
+    if (user) userArray = users.teachers;
+  }
+
+  if (!user) {
+    user = users.students.find(u => u.id === userId);
+    if (user) userArray = users.students;
+  }
+
+  if (!user) {
+    return res.status(404).json({ message: 'User tidak ditemukan' });
+  }
+
+  // Verify current password
+  const isValidPassword = bcrypt.compareSync(currentPassword, user.password);
+  
+  if (!isValidPassword) {
+    return res.status(401).json({ message: 'Password saat ini salah' });
+  }
+
+  // Validate new password strength
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
+  if (!passwordRegex.test(newPassword)) {
+    return res.status(400).json({ 
+      message: 'Password baru harus minimal 8 karakter dan mengandung huruf besar, huruf kecil, angka, dan karakter khusus' 
+    });
+  }
+
+  // Update password
+  user.password = bcrypt.hashSync(newPassword, 10);
+
+  res.json({ 
+    message: 'Password berhasil diubah',
+    success: true 
+  });
+});
+
 module.exports = router;
 
