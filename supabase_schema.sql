@@ -42,12 +42,15 @@ create table if not exists grades (
   nama_siswa text,
   kelas text,
   mata_pelajaran text,
-  kategori text check (kategori in ('UH','UTS','UAS','Tugas','Praktik')),
-  nilai numeric,
+  kategori text not null, -- Main category: UH, UTS, UAS, Tugas, Praktik, Custom
+  sub_kategori text, -- Detail for custom categories (e.g., "Praktik Jaringan", "Praktik Troubleshooting")
+  nilai numeric check (nilai >= 0 and nilai <= 100),
   keterangan text,
   teacher_id text,
   teacher_name text,
-  tanggal timestamp with time zone default now()
+  tanggal timestamp with time zone default now(),
+  semester text default '1',
+  tahun_ajaran text default '2024/2025'
 );
 
 create table if not exists exams (

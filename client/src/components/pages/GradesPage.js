@@ -11,6 +11,7 @@ function GradesPage({ user }) {
     studentId: '',
     mataPelajaran: '',
     kategori: 'UH',
+    sub_kategori: '',
     nilai: '',
     keterangan: ''
   });
@@ -141,7 +142,11 @@ function GradesPage({ user }) {
                     {user.role !== 'siswa' && <td>{grade.namaSiswa}</td>}
                     <td>{grade.mataPelajaran}</td>
                     <td>
-                      <span className="badge badge-info">{grade.kategori}</span>
+                      <span className="badge badge-info">
+                        {grade.kategori}
+                        {grade.sub_kategori && <br />}
+                        {grade.sub_kategori && <small>{grade.sub_kategori}</small>}
+                      </span>
                     </td>
                     <td>
                       <span className={`badge ${
@@ -222,7 +227,7 @@ function GradesPage({ user }) {
                 <label>Kategori *</label>
                 <select
                   value={formData.kategori}
-                  onChange={(e) => setFormData({ ...formData, kategori: e.target.value })}
+                  onChange={(e) => setFormData({ ...formData, kategori: e.target.value, sub_kategori: '' })}
                   required
                 >
                   <option value="UH">Ulangan Harian</option>
@@ -230,8 +235,39 @@ function GradesPage({ user }) {
                   <option value="UAS">Ujian Akhir Semester</option>
                   <option value="Tugas">Tugas</option>
                   <option value="Praktik">Praktik</option>
+                  <option value="Proyek">Proyek</option>
                 </select>
               </div>
+
+              {formData.kategori === 'Praktik' && (
+                <div className="input-group">
+                  <label>Jenis Praktik *</label>
+                  <select
+                    value={formData.sub_kategori}
+                    onChange={(e) => setFormData({ ...formData, sub_kategori: e.target.value })}
+                    required
+                  >
+                    <option value="">Pilih Jenis Praktik</option>
+                    <option value="Praktik Jaringan">Praktik Jaringan</option>
+                    <option value="Praktik Troubleshooting">Praktik Troubleshooting</option>
+                    <option value="Praktik Maintenance">Praktik Maintenance</option>
+                    <option value="Praktik Perakitan PC">Praktik Perakitan PC</option>
+                    <option value="Praktik Konfigurasi Server">Praktik Konfigurasi Server</option>
+                  </select>
+                </div>
+              )}
+
+              {formData.kategori === 'Tugas' && (
+                <div className="input-group">
+                  <label>Jenis Tugas</label>
+                  <input
+                    type="text"
+                    value={formData.sub_kategori}
+                    onChange={(e) => setFormData({ ...formData, sub_kategori: e.target.value })}
+                    placeholder="Contoh: Tugas Troubleshooting, Tugas Jaringan, dll"
+                  />
+                </div>
+              )}
 
               <div className="input-group">
                 <label>Nilai (0-100) *</label>

@@ -14,20 +14,20 @@
 
 ### 👤 Guru 1: DIDIK KURNIAWAN, S.Kom, M.TI
 ```
-Username: guru1
-Password: guru123
+Username: didik
+Password: Didik@MPKK2024!
 NIP: 198103102010011012
 Email: didik.kurniawan@smkn1liwa.sch.id
-Jadwal Mengajar: RABU & KAMIS (Full Day)
+Jadwal Mengajar: RABU & KAMIS
 ```
 
 ### 👤 Guru 2: ADE FIRMANSYAH, S.Kom
 ```
-Username: guru2
-Password: guru123
+Username: ade
+Password: Ade@TJKT2024!
 NIP: 3855773674130022
 Email: ade.firmansyah@smkn1liwa.sch.id
-Jadwal Mengajar: SENIN, SELASA, JUMAT, SABTU
+Jadwal Mengajar: SENIN & JUMAT
 ```
 
 ---

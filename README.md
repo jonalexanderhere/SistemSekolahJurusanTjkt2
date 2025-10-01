@@ -201,10 +201,11 @@ npm run dev
 # Run with localStorage (no Supabase needed)
 npm run dev
 
-# Login as:
-# Admin: admin1 / Admin#SMKN1Liwa2024!
-# Guru: guru1 / guru123
-# Siswa: 0089990908 / 6643
+# Login credentials available in CREDENTIALS.md (private file)
+# Different login types:
+# - Admin: Full system access
+# - Guru: Teaching & grading
+# - Siswa: Learning & attendance
 ```
 
 ---
@@ -304,8 +305,7 @@ git push origin main
 
 ```bash
 # 1. Login with NISN and ID
-NISN: Your NISN number
-Password: Your Student ID
+# Credentials provided by school admin
 
 # 2. Register face (one-time)
 Dashboard → Registrasi Wajah → Allow camera → Complete
@@ -322,14 +322,14 @@ Dashboard → Nilai Saya
 Dashboard → Ujian → Select exam → Start
 ```
 
-**📖 Full Guide:** [UNTUK_SISWA.md](./UNTUK_SISWA.md)
+**📖 Full Guide:** [UNTUK_SISWA.md](./UNTUK_SISWA.md)  
+**🔐 Login Info:** [CREDENTIALS.md](./CREDENTIALS.md) *(Private - Not in GitHub)*
 
 ### For Teachers (Guru)
 
 ```bash
 # 1. Login
-Username: guru1 or guru2
-Password: guru123 (change after first login!)
+# Username & password provided separately (CREDENTIALS.md)
 
 # 2. Monitor attendance
 Dashboard → Absensi
@@ -344,14 +344,14 @@ Dashboard → Ujian → + Buat Ujian Baru
 Dashboard → Download reports
 ```
 
-**📖 Full Guide:** [UNTUK_GURU.md](./UNTUK_GURU.md)
+**📖 Full Guide:** [UNTUK_GURU.md](./UNTUK_GURU.md)  
+**🔐 Login Info:** [CREDENTIALS.md](./CREDENTIALS.md) *(Private - Not in GitHub)*
 
 ### For Administrators
 
 ```bash
-# 1. Login with strong password
-Username: admin1 or admin2
-Password: (Strong password provided)
+# 1. Login
+# Secure credentials provided separately (CREDENTIALS.md)
 
 # 2. Configure school hours
 Dashboard → Pengaturan → Edit attendance times
@@ -366,7 +366,8 @@ Dashboard → View statistics & logs
 Dashboard → Data Siswa / Guru
 ```
 
-**📖 Full Guide:** [UNTUK_ADMIN.md](./UNTUK_ADMIN.md)
+**📖 Full Guide:** [UNTUK_ADMIN.md](./UNTUK_ADMIN.md)  
+**🔐 Login Info:** [CREDENTIALS.md](./CREDENTIALS.md) *(Private - Not in GitHub)*
 
 ---
 

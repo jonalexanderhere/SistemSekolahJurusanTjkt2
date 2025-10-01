@@ -1,10 +1,14 @@
 node_modules/
 client/node_modules/
 .env
+.env.local
 *.log
 build/
 dist/
 .DS_Store
 uploads/
 face-data/
+CREDENTIALS.md
+supabase_update_passwords.sql
+client/.env.local
 

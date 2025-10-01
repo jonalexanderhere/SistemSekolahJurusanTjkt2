@@ -26,21 +26,21 @@ const users = {
   teachers: [
     {
       id: 'guru001',
-      username: 'guru1',
-      password: hashPassword('guru123'),
+      username: 'didik',
+      password: hashPassword('Didik@MPKK2024!'),
       nama: 'DIDIK KURNIAWAN, S.Kom, M.TI',
       role: 'guru',
-      email: 'didik@smktjkt.sch.id',
+      email: 'didik.kurniawan@smkn1liwa.sch.id',
       nip: '198103102010011012',
       mataPelajaran: ['MPKK']
     },
     {
       id: 'guru002',
-      username: 'guru2',
-      password: hashPassword('guru123'),
+      username: 'ade',
+      password: hashPassword('Ade@TJKT2024!'),
       nama: 'ADE FIRMANSYAH, S.Kom',
       role: 'guru',
-      email: 'ade@smktjkt.sch.id',
+      email: 'ade.firmansyah@smkn1liwa.sch.id',
       nip: '3855773674130022',
       mataPelajaran: ['MPKK']
     }
