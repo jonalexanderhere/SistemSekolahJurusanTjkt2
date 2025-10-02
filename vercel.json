@@ -10,8 +10,8 @@
       "use": "@vercel/static-build", 
       "config": { 
         "distDir": "build",
-        "installCommand": "cd client && node vercel-build.js",
-        "buildCommand": "echo 'Build completed in installCommand'"
+        "installCommand": "cd client && npm install --legacy-peer-deps --force",
+        "buildCommand": "cd client && npm run build"
       } 
     }
   ],
